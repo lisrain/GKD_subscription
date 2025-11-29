@@ -6,7 +6,7 @@ export default defineGkdApp({
   groups: [
     {
       key: 1,
-      name: '跳过学生票弹窗',
+      name: '弹窗类-跳过学生票弹窗',
       desc: '自动点击跳过按钮跳过学生票弹窗',
       rules: [
         {

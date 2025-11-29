@@ -7,7 +7,7 @@ export default defineGkdApp({
     {
       key: 1,
       name: '弹窗类-自动跳过更新',
-      desc: '自动跳过更新弹窗',
+      desc: '自动跳过更新弹窗（因强制更新故暂关）',
       enable: false,
       actionMaximum: 1,
       matchTime: 10000,
@@ -34,8 +34,8 @@ export default defineGkdApp({
     },
     {
       key: 9,
-      name: '[2]自动取消跳转+返回',
-      desc: '自动取消跳转弹窗并返回',
+      name: '任务类-[2]自动取消跳转+返回',
+      desc: '自动取消跳转弹窗并返回（任务已关闭）',
       enable: false,
       rules: [
         {
@@ -64,8 +64,8 @@ export default defineGkdApp({
     },
     {
       key: 4,
-      name: '[1]自动点击外卖红包-领福利',
-      desc: '自动点击外卖红包-领福利',
+      name: '任务类-[1]自动点击外卖红包-领福利',
+      desc: '自动点击外卖红包-领福利（任务已关闭）',
       enable: false,
       actionDelay: 3500,
       rules: [
@@ -78,8 +78,8 @@ export default defineGkdApp({
     },
     {
       key: 14,
-      name: '[2]自动直接返回beta',
-      desc: '自动直接返回并确认获取积分',
+      name: '任务类-[2]自动直接返回beta',
+      desc: '自动直接返回并确认获取积分（任务已关闭）',
       enable: false,
       rules: [
         {
@@ -98,7 +98,7 @@ export default defineGkdApp({
     },
     {
       key: 2,
-      name: '弹窗类-关闭开屏外卖红包弹窗',
+      name: '功能类-关闭开屏外卖红包弹窗',
       desc: '关闭外卖红包弹窗（建议禁止app剪贴板权限）',
       actionMaximum: 1,
       matchTime: 10000,

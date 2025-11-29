@@ -1,0 +1,24 @@
+import { defineGkdApp } from '@gkd-kit/define';
+
+export default defineGkdApp({
+      "id": "com.dragon.read.oversea.gp",
+      "name": "番茄小说",
+      "groups": [
+        {
+          "key": 2,
+          "name": "弹窗类-自动取消[开启推送提醒]",
+          "desc": "自动点击取消[开启推送提醒]",
+          "rules": [
+            {
+              "matches": [
+                "@[text=\"取消\"][visibleToUser=true] <<n *[vid=\"content_view\"] > *[vid=\"layout_text\"] > *[text=\"开启推送提醒\"][visibleToUser=true]"
+              ],
+              "fastQuery": true,
+              "activityIds": [
+                "com.dragon.read.pages.main.MainFragmentActivity"
+              ]
+            }
+          ]
+        }
+      ]
+});

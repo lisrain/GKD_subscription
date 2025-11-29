@@ -5,9 +5,9 @@ import globalGroups from './globalGroups';
 
 export default defineGkdSubscription({
   id: 5678,
-  name: '听雨 的 GKD订阅-请勿随意传播',
+  name: '听雨 的 GKD订阅-请勿传播',
   version: 0,
-  author: 'author',
+  author: 'lisrain',
   checkUpdateUrl: './gkd.version.json5',
   supportUri: 'https://github.com/lisrain/lisrain_gkd/issues',
   categories,

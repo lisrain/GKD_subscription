@@ -13,12 +13,12 @@ export default defineGkdApp({
           key: 1,
           matches: [
             "[text=\"体检优化\"] < [vid=\"topPanel\"] + * + [vid=\"buttonPanel\"] > [text=\"退出\"]"
-          ]，
+          ]， 
           fastQuery: true，
           activityIds: [
             "com.miui.securityscan.MainEntryActivity"
           ]
-        },
+        }，
         {
           key: 2,
           matches: [

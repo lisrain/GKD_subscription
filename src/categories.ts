@@ -23,4 +23,10 @@ export default defineGkdCategories([
     name: '任务类',
     enable: false,
   },
+  {
+    // 部分无操作影响但看着不舒服的内容
+    key: 8,
+    name: '占位类',
+    enable: false,
+  },
 ]);

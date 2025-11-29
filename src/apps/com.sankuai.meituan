@@ -1,7 +1,7 @@
 import { defineGkdApp } from '@gkd-kit/define';
 
 export default defineGkdApp({
-  "id": "com.sankuai.meituan",
+     "id": "com.sankuai.meituan",
       "name": "美团",
       "groups": [
         {
@@ -41,5 +41,5 @@ export default defineGkdApp({
         }
       ]
     }
-  ], 
+  ] 
 });

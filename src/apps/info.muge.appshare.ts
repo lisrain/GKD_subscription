@@ -6,7 +6,7 @@ export default defineGkdApp({
   groups: [
     {
       key: 1,
-      name: "[功能类]自动跳过'奖励已领取'后的广告",
+      name: "功能类-自动跳过'奖励已领取'后的广告",
       desc: "自动跳过'奖励已领取'后的广告页面",
       rules: [
         {
@@ -19,8 +19,8 @@ export default defineGkdApp({
     },
     {
       key: 2,
-      name: '[占位类]自动关闭搜索页底部广告栏',
-      desc: '自动关闭搜索页底部广告栏',
+      name: '占位类-自动关闭搜索页底部广告栏',
+      desc: '自动关闭搜索页底部广告栏（有误触待修）',
       actionDelay: 2000,
       enable: false,
       rules: [
@@ -42,8 +42,8 @@ export default defineGkdApp({
     },
     {
       key: 0,
-      name: '［保证展示率]开屏广告',
-      desc: '规则来源：AIsouler',
+      name: '开屏广告-保证展示率',
+      desc: '延时2s跳过，规则来源：AIsouler',
       actionMaximumKey: 0,
       actionDelay: 2000,
       actionMaximum: 1,

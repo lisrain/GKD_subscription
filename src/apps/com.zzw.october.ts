@@ -6,8 +6,8 @@ export default defineGkdApp({
   groups: [
     {
       key: 1,
-      name: '开屏-首页弹窗广告',
-      desc: '开屏-首页弹窗广告',
+      name: '弹窗类-首页弹窗广告',
+      desc: '首页弹窗广告',
       actionMaximum: 1,
       resetMatch: 'app',
       rules: [

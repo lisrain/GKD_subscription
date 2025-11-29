@@ -6,8 +6,9 @@ export default defineGkdApp({
   groups: [
     {
       key: 1,
-      name: '[弹窗类]自动跳过更新',
-      desc: '[弹窗类]自动跳过更新弹窗',
+      name: '弹窗类]-动跳过更新',
+      desc: '自动跳过更新弹窗',
+      enable: false,
       actionMaximum: 1,
       matchTime: 10000,
       resetMatch: 'app',
@@ -98,8 +99,7 @@ export default defineGkdApp({
     {
       key: 2,
       name: '弹窗类-关闭开屏外卖红包弹窗',
-      desc: '关闭外卖红包弹窗',
-      enable: false,
+      desc: '关闭外卖红包弹窗（建议禁止app剪贴板权限）',
       actionMaximum: 1,
       matchTime: 10000,
       resetMatch: 'app',

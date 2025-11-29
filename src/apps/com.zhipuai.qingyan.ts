@@ -20,7 +20,7 @@ export default defineGkdApp({
     },
     {
       key: 2,
-      name: '[功能类]自动忽略首页推荐',
+      name: '功能类-自动忽略首页推荐',
       desc: '自动忽略首页智能体推荐',
       rules: [
         {

@@ -6,7 +6,7 @@ export default defineGkdApp({
   groups: [
     {
       key: 16,
-      name: '[弹窗类]自动关闭不足xx分体验优化',
+      name: '弹窗类-自动关闭不足xx分体验优化',
       desc: '自动关闭不足xx分体验优化弹窗',
       rules: [
         {

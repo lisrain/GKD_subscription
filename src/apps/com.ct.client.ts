@@ -6,8 +6,8 @@ export default defineGkdApp({
   groups: [
     {
       key: 2,
-      name: '[功能类]自动清除未读消息',
-      desc: '[功能类]自动点击消息清除并确认',
+      name: '功能类-自动清除未读消息',
+      desc: '消息页自动点击消息清除并确认',
       actionMaximum: 1,
       resetMatch: 'app',
       rules: [
@@ -30,7 +30,7 @@ export default defineGkdApp({
     },
     {
       key: 1,
-      name: '[弹窗类]自动关闭推送通知提醒弹窗',
+      name: '弹窗类-自动关闭推送通知提醒弹窗',
       desc: '自动关闭推送通知提醒弹窗',
       rules: [
         {

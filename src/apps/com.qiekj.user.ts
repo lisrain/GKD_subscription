@@ -33,7 +33,7 @@ export default defineGkdApp({
       ],
     },
     {
-      key: 9,
+      key: 11,
       name: '任务类-[2]自动取消跳转+返回',
       desc: '自动取消跳转弹窗并返回（任务已关闭）',
       enable: false,
@@ -63,7 +63,7 @@ export default defineGkdApp({
       ],
     },
     {
-      key: 4,
+      key: 10,
       name: '任务类-[1]自动点击外卖红包-领福利',
       desc: '自动点击外卖红包-领福利（任务已关闭）',
       enable: false,
@@ -141,6 +141,19 @@ export default defineGkdApp({
           activityIds: '.ui.activity.scan.AfterPayUseAct',
           matches:
             '@[id$="wm_pop_pic_close"][visibleToUser=true] - [id$="wm_pop_pic_container"]',
+        },
+        {
+          fastQuery: true,
+          activityIds:
+            'cn.vlion.ad.inland.ad.interstitial.VlionCustomInterstitialActivity',
+          matches:
+            '@[vid="vilon_close"][visibleToUser=true] <<n [vid="vlion_ad_closed"] <<n [vid="vlion_ad_endcard_fl"]',
+        },
+        {
+          fastQuery: true,
+          activityIds:
+            'cn.vlion.ad.inland.ad.interstitial.VlionCustomInterstitialActivity',
+          matches: '@[vid="vilon_close"] <<n [vid="vlion_ad_closed"]',
         },
       ],
     },

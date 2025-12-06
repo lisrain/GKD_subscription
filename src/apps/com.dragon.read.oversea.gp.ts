@@ -5,6 +5,19 @@ export default defineGkdApp({
   name: '番茄小说',
   groups: [
     {
+      key: 1,
+      name: '功能类-书架自动展开全部',
+      desc: '书架页自动点击展开全部',
+      rules: [
+        {
+          fastQuery: true,
+          activityIds: 'com.dragon.read.pages.main.MainFragmentActivity',
+          matches:
+            '@[vid="unfold_tv"][text="展开全部"] + ImageView[vid="unfold_iv"]',
+        },
+      ],
+    },
+    {
       key: 2,
       name: '弹窗类-自动取消[开启推送提醒]',
       desc: '自动点击取消[开启推送提醒]',
@@ -14,7 +27,7 @@ export default defineGkdApp({
             '@[text="取消"][visibleToUser=true] <<n *[vid="content_view"] > *[vid="layout_text"] > *[text="开启推送提醒"][visibleToUser=true]',
           ],
           fastQuery: true,
-          activityIds: ['com.dragon.read.pages.main.MainFragmentActivity'],
+          activityIds: 'com.dragon.read.pages.main.MainFragmentActivity',
         },
       ],
     },

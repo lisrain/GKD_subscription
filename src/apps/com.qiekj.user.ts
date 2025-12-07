@@ -149,6 +149,12 @@ export default defineGkdApp({
           matches:
             '@[vid="vilon_close"||vid="vilon_close_miss"][visibleToUser=true] <<n [vid="vlion_ad_closed"]',
         },
+        {
+          activityIds:
+            'com.bytedance.sdk.openadsdk.stub.activity.Stub_Standard_Portrait_Activity',
+          matches:
+            '@Image[width<60][height<60][visibleToUser=true] <<2 View - View > TextView[text="反馈"]',
+        },
       ],
     },
   ],

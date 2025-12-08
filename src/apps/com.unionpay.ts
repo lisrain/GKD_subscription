@@ -10,6 +10,7 @@ export default defineGkdApp({
       desc: '自动跳过每日玩赚中心签到弹窗',
       rules: [
         {
+          action: 'clickCenter',
           activityIds: '.liteapp.app.UPLiteAppActivity1',
           matches:
             '@[text="签到成功"] <<n * - Image[text^="success-head@"] <<n [text="玩赚中心"]',

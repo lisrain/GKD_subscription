@@ -155,6 +155,13 @@ export default defineGkdApp({
           matches:
             '@Image[width<60][height<60][visibleToUser=true] <<2 View - View > TextView[text="反馈"]',
         },
+        {
+          fastQuery: true,
+          activityIds:
+            'com.bytedance.sdk.openadsdk.stub.activity.Stub_Standard_Portrait_Activity',
+          matches:
+            '@ImageView[visibleToUser=true] <<4 ViewGroup + ViewGroup > ViewGroup + ViewGroup >3 [text="反馈"]',
+        },
       ],
     },
   ],

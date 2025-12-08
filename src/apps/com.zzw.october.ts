@@ -10,6 +10,7 @@ export default defineGkdApp({
       desc: '首页弹窗广告',
       actionMaximum: 1,
       resetMatch: 'app',
+      enable: false,
       rules: [
         {
           matches: [

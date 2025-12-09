@@ -20,10 +20,6 @@ export default defineGkdApp({
             '@Button[text="关闭"] <2 View[id="redBagMod"]',
           ],
         },
-        {
-          activityIds: 'com.taobao.tao.welcome.Welcome',
-          matches: '@TextView[index=4] <<n View[childCount=5][index=0]',
-        },
       ],
     },
   ],

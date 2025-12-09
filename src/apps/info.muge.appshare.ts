@@ -21,13 +21,14 @@ export default defineGkdApp({
       key: 2,
       name: '测试类-搜索结果页广告',
       desc: '自动关闭搜索页面各类广告',
+      matchRoot:true,
       rules: [
         {
           fastQuery: true,
           action: 'clickCenter',
           activityIds: '.view.search.v4.SearchActivity',
           matches: [
-            'FrameLayout[childCount=5] > FrameLayout > @ImageView[visibleToUser=true] <<n [vid="adView"]',
+            'FrameLayout[childCount=5] > FrameLayout > @ImageView[visibleToUser=true][width=height] <<n [vid="adView"]',
           ],
           excludeMatches: ['[text="热门搜索"]'],
         },
@@ -35,7 +36,7 @@ export default defineGkdApp({
           action: 'clickCenter',
           activityIds: '.view.search.v4.SearchActivity',
           matches:
-            'View[childCount=5] > View[index=3] > @Image[visibleToUser=true] <<12 WebView',
+            'View[childCount=5] > View[index=3] > @Image[visibleToUser=true][width<60&&height<60] <<12 WebView',
         },
       ],
     },
@@ -43,13 +44,14 @@ export default defineGkdApp({
       key: 3,
       name: '测试类-自动关闭应用详情页广告栏',
       desc: '自动关闭应用详情页中部广告栏',
+      matchRoot: true,
       rules: [
         {
           fastQuery: true,
           action: 'clickCenter',
           activityIds: '.view.app.detail.v4.AppDetailV4Activity',
           matches: [
-            'FrameLayout[childCount=5] > FrameLayout > @ImageView[visibleToUser=true] <<n [vid="cardAd"]',
+            'FrameLayout[childCount=5] > FrameLayout > @ImageView[visibleToUser=true][width=height] <<n [vid="cardAd"]',
           ],
         },
       ],
@@ -58,20 +60,21 @@ export default defineGkdApp({
       key: 4,
       name: '局部类-帖子页广告',
       desc: '自动关闭广场帖子页各类广告',
+      matchRoot: true,
       rules: [
         {
           fastQuery: true,
           action: 'clickCenter',
           activityIds: '.view.article.ArticleDetailActivity',
           matches:
-            'FrameLayout[childCount=5] > FrameLayout > @ImageView[visibleToUser=true] <<n [vid="adView"]',
+            'FrameLayout[childCount=5] > FrameLayout > @ImageView[visibleToUser=true][width=height] <<n [vid="adView"]',
         },
         {
           fastQuery: true,
           action: 'clickCenter',
           activityIds: '.view.article.ArticleDetailActivity',
           matches:
-            'FrameLayout[childCount=3] > FrameLayout > @ImageView[visibleToUser=true] <<n [vid="adView"]',
+            'FrameLayout[childCount=3] > FrameLayout > @ImageView[visibleToUser=true][width=height] <<n [vid="adView"]',
         },
       ],
     },

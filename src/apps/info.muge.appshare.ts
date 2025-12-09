@@ -21,7 +21,7 @@ export default defineGkdApp({
       key: 2,
       name: '测试类-搜索结果页广告',
       desc: '自动关闭搜索页面各类广告',
-      matchRoot:true,
+      matchRoot: true,
       rules: [
         {
           fastQuery: true,

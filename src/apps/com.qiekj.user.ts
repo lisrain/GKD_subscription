@@ -162,6 +162,11 @@ export default defineGkdApp({
           matches:
             '@ImageView[visibleToUser=true] <<4 ViewGroup + ViewGroup > ViewGroup + ViewGroup >3 [text="反馈"]',
         },
+        {
+          activityIds: '.ui.activity.scan.AfterPayUseAct',
+          matches:
+            'ImageView[id="com.wangmai.allmodules:id/wm_pop_pic_close"][visibleToUser=true] <<n [id="com.wangmai.allmodules:id/rl_popup_content"]',
+        },
       ],
     },
   ],

@@ -113,8 +113,8 @@ export default defineGkdApp({
     },
     {
       key: 3,
-      name: '功能类-自动选中支付宝支付&抵扣',
-      desc: '自动选中支付宝支付&积分抵扣',
+      name: '功能类-自动选中支付宝支付',
+      desc: '自动选中支付宝支付',
       actionDelay: 250,
       actionMaximum: 1,
       rules: [
@@ -125,6 +125,14 @@ export default defineGkdApp({
           fastQuery: true,
           activityIds: ['com.qiekj.user.ui.activity.scan.AfterPayUseAct'],
         },
+      ],
+    },
+    {
+      key: 4,
+      name: '功能类-自动选中积分抵扣',
+      desc: '自动选中积分抵扣',
+      actionMaximum: 1,
+      rules: [
         {
           matches: ['[text="自动抵扣"] + [vid="switchView"][checked=false]'],
           fastQuery: true,

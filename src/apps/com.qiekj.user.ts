@@ -177,5 +177,17 @@ export default defineGkdApp({
         },
       ],
     },
+    {
+      key: 7,
+      name: '局部类-局部广告',
+      desc: '自动关闭首页局部sdk广告',
+      rules: [
+        {
+          activityIds: '.MainActivity',
+          matches:
+            '@ImageView[clickable=false][visibleToUser=true][width=height] <<2 * - TextView <<n [id="com.kwad.dy.sdk:id/ksad_container"]',
+        },
+      ],
+    },
   ],
 });

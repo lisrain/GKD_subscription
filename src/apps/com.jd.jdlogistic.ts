@@ -30,5 +30,21 @@ export default defineGkdApp({
         },
       ],
     },
+    {
+      key: 3,
+      name: '弹窗类-首页弹窗',
+      desc: '自动关闭首页推广弹窗',
+      matchTime: 10000,
+      actionMaximum: 1,
+      resetMatch: 'app',
+      rules: [
+        {
+          fastQuery: true,
+          activityIds: '.flutter.HomeActivity',
+          matches:
+            '@ImageView <2 View < View < View < View < FrameLayout < FrameLayout < [id="android:id/content"]',
+        },
+      ],
+    },
   ],
 });

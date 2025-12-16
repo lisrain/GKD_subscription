@@ -24,7 +24,10 @@ export default defineGkdApp({
           preKeys: [0],
           action: 'clickCenter',
           matches: [
-            '@Image[visibleToUser=true][text=""][desc=null] - View - [text="号码保护"]',
+            '@[visibleToUser=true][text="未开启"][desc=null] -2 View - [text="号码保护"]',
+          ],
+          excludeMatches: [
+            '@[visibleToUser=true][text="隐私保护中"][desc=null] -2 View - [text="号码保护"]',
           ],
           activityIds: ['com.meituan.msc.modules.container.MSCActivity'],
         },

@@ -8,6 +8,7 @@ export default defineGkdApp({
       key: 1,
       name: '弹窗类-玩赚中心签到',
       desc: '自动跳过每日玩赚中心签到弹窗',
+      enable: false,
       rules: [
         {
           action: 'clickCenter',

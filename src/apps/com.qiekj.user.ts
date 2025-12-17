@@ -33,70 +33,6 @@ export default defineGkdApp({
       ],
     },
     {
-      key: 11,
-      name: '任务类-[2]自动取消跳转+返回',
-      desc: '自动取消跳转弹窗并返回（任务已关闭）',
-      enable: false,
-      rules: [
-        {
-          key: 6,
-          matches: [
-            '[text="您需要离开胖乖生活前往其他应用吗？"]',
-            '[text="取消"]',
-          ],
-          fastQuery: true,
-          activityIds: ['com.qiekj.user.ui.activity.web.WebViewAct'],
-        },
-        {
-          key: 7,
-          preKeys: [6],
-          matches: ['[text="正在跳转"] - TextView'],
-          activityIds: ['com.qiekj.user.ui.activity.web.WebViewAct'],
-        },
-        {
-          key: 8,
-          preKeys: [7],
-          matches: ['[text="胖乖积分"]', '[vid="award"] + [vid="cancel"]'],
-          fastQuery: true,
-          activityIds: ['com.qiekj.user.MainActivity'],
-        },
-      ],
-    },
-    {
-      key: 10,
-      name: '任务类-[1]自动点击外卖红包-领福利',
-      desc: '自动点击外卖红包-领福利（任务已关闭）',
-      enable: false,
-      actionDelay: 3500,
-      rules: [
-        {
-          matches: ['[text="天天领外卖红包"] +4 [text="领福利"]'],
-          fastQuery: true,
-          activityIds: ['com.qiekj.user.MainActivity'],
-        },
-      ],
-    },
-    {
-      key: 14,
-      name: '任务类-[2]自动直接返回beta',
-      desc: '自动直接返回并确认获取积分（任务已关闭）',
-      enable: false,
-      rules: [
-        {
-          key: 7,
-          matches: ['[text="正在跳转"] - TextView'],
-          activityIds: ['com.qiekj.user.ui.activity.web.WebViewAct'],
-        },
-        {
-          key: 8,
-          preKeys: [7],
-          matches: ['[text="胖乖积分"]', '[vid="award"] + [vid="cancel"]'],
-          fastQuery: true,
-          activityIds: ['com.qiekj.user.MainActivity'],
-        },
-      ],
-    },
-    {
       key: 2,
       name: '功能类-关闭开屏外卖红包弹窗',
       desc: '关闭外卖红包弹窗（建议禁止app剪贴板权限）',
@@ -186,6 +122,70 @@ export default defineGkdApp({
           activityIds: '.MainActivity',
           matches:
             '@ImageView[clickable=false][visibleToUser=true][width=height] <<2 * - TextView <<n [id="com.kwad.dy.sdk:id/ksad_container"]',
+        },
+      ],
+    },
+    {
+      key: 10,
+      name: '任务类-[1]自动点击外卖红包-领福利',
+      desc: '自动点击外卖红包-领福利（任务已关闭）',
+      enable: false,
+      actionDelay: 3500,
+      rules: [
+        {
+          matches: ['[text="天天领外卖红包"] +4 [text="领福利"]'],
+          fastQuery: true,
+          activityIds: ['com.qiekj.user.MainActivity'],
+        },
+      ],
+    },
+    {
+      key: 11,
+      name: '任务类-[2]自动取消跳转+返回',
+      desc: '自动取消跳转弹窗并返回（任务已关闭）',
+      enable: false,
+      rules: [
+        {
+          key: 6,
+          matches: [
+            '[text="您需要离开胖乖生活前往其他应用吗？"]',
+            '[text="取消"]',
+          ],
+          fastQuery: true,
+          activityIds: ['com.qiekj.user.ui.activity.web.WebViewAct'],
+        },
+        {
+          key: 7,
+          preKeys: [6],
+          matches: ['[text="正在跳转"] - TextView'],
+          activityIds: ['com.qiekj.user.ui.activity.web.WebViewAct'],
+        },
+        {
+          key: 8,
+          preKeys: [7],
+          matches: ['[text="胖乖积分"]', '[vid="award"] + [vid="cancel"]'],
+          fastQuery: true,
+          activityIds: ['com.qiekj.user.MainActivity'],
+        },
+      ],
+    },
+    {
+      key: 14,
+      name: '任务类-[2]自动直接返回beta',
+      desc: '自动直接返回并确认获取积分（任务已关闭）',
+      enable: false,
+      rules: [
+        {
+          key: 7,
+          matches: ['[text="正在跳转"] - TextView'],
+          activityIds: ['com.qiekj.user.ui.activity.web.WebViewAct'],
+        },
+        {
+          key: 8,
+          preKeys: [7],
+          matches: ['[text="胖乖积分"]', '[vid="award"] + [vid="cancel"]'],
+          fastQuery: true,
+          activityIds: ['com.qiekj.user.MainActivity'],
         },
       ],
     },

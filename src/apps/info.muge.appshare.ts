@@ -5,81 +5,6 @@ export default defineGkdApp({
   name: 'AppShare',
   groups: [
     {
-      key: 1,
-      name: '功能类-自动跳过奖励已领取后的广告',
-      desc: '自动跳过奖励已领取后的广告页面',
-      enable: false,
-      rules: [
-        {
-          matches: ['@[text="｜跳过"] - [text="奖励已领取"]'],
-          activityIds: [
-            'com.bytedance.sdk.openadsdk.stub.activity.Stub_Standard_Portrait_Activity',
-          ],
-        },
-      ],
-    },
-    {
-      key: 2,
-      name: '测试类-搜索结果页广告',
-      desc: '自动关闭搜索页面各类广告',
-      matchRoot: true,
-      rules: [
-        {
-          fastQuery: true,
-          action: 'clickCenter',
-          activityIds: '.view.search.v4.SearchActivity',
-          matches: [
-            'FrameLayout[childCount=5] > FrameLayout > @ImageView[visibleToUser=true][width=height] <<n [vid="adView"]',
-          ],
-          excludeMatches: ['[text="热门搜索"]'],
-        },
-        {
-          action: 'clickCenter',
-          activityIds: '.view.search.v4.SearchActivity',
-          matches:
-            'View[childCount=5] > View[index=3] > @Image[visibleToUser=true][width<60&&height<60] <<12 WebView',
-        },
-      ],
-    },
-    {
-      key: 3,
-      name: '测试类-自动关闭应用详情页广告栏',
-      desc: '自动关闭应用详情页中部广告栏',
-      matchRoot: true,
-      rules: [
-        {
-          fastQuery: true,
-          action: 'clickCenter',
-          activityIds: '.view.app.detail.v4.AppDetailV4Activity',
-          matches: [
-            'FrameLayout[childCount=5] > FrameLayout > @ImageView[visibleToUser=true][width=height] <<n [vid="cardAd"]',
-          ],
-        },
-      ],
-    },
-    {
-      key: 4,
-      name: '局部类-帖子页广告',
-      desc: '自动关闭广场帖子页各类广告',
-      matchRoot: true,
-      rules: [
-        {
-          fastQuery: true,
-          action: 'clickCenter',
-          activityIds: '.view.article.ArticleDetailActivity',
-          matches:
-            'FrameLayout[childCount=5] > FrameLayout > @ImageView[visibleToUser=true][width=height] <<n [vid="adView"]',
-        },
-        {
-          fastQuery: true,
-          action: 'clickCenter',
-          activityIds: '.view.article.ArticleDetailActivity',
-          matches:
-            'FrameLayout[childCount=3] > FrameLayout > @ImageView[visibleToUser=true][width=height] <<n [vid="adView"]',
-        },
-      ],
-    },
-    {
       key: 0,
       name: '开屏广告-保证展示率',
       desc: '延时2s跳过，规则来源：AIsouler',
@@ -123,6 +48,108 @@ export default defineGkdApp({
             'https://i.gkd.li/i/15285908',
             'https://i.gkd.li/i/15520277',
           ],
+        },
+      ],
+    },
+    {
+      key: 1,
+      name: '功能类-自动跳过奖励已领取后的广告',
+      desc: '自动跳过奖励已领取后的广告页面',
+      enable: false,
+      rules: [
+        {
+          matches: ['@[text="｜跳过"] - [text="奖励已领取"]'],
+          activityIds: [
+            'com.bytedance.sdk.openadsdk.stub.activity.Stub_Standard_Portrait_Activity',
+          ],
+        },
+      ],
+    },
+    {
+      key: 2,
+      name: '测试类-搜索结果页广告',
+      desc: '自动关闭搜索页面各类广告',
+      matchRoot: true,
+      rules: [
+        {
+          fastQuery: true,
+          action: 'clickCenter',
+          activityIds: '.view.search.v4.SearchActivity',
+          matches: [
+            'FrameLayout[childCount=5] > FrameLayout > @ImageView[visibleToUser=true][width=height] <<n [vid="adView"]',
+          ],
+          excludeMatches: ['[text="热门搜索"]'],
+        },
+        {
+          action: 'clickCenter',
+          activityIds: '.view.search.v4.SearchActivity',
+          matches:
+            'View[childCount=5] > View[index=3] > @Image[visibleToUser=true][width<60&&height<60] <<12 WebView',
+        },
+        {
+          //被迫用坐标点击，因为对应节点图根本没有“X"节点
+          fastQuery: true,
+          action: 'clickCenter',
+          activityIds: '.view.search.v4.SearchActivity',
+          position: {
+            top: 'width * 0.0313',
+            left: 'width * 0.9615',
+          },
+          matches:
+            '@View[text=""][visibleToUser=true] - TextView < WebView <<n [vid="adView"]',
+          excludeMatches: ['[text="热门搜索"]'],
+        },
+      ],
+    },
+    {
+      key: 3,
+      name: '测试类-自动关闭应用详情页广告栏',
+      desc: '自动关闭应用详情页中部广告栏',
+      actionCd: 500,
+      matchRoot: true,
+      rules: [
+        {
+          fastQuery: true,
+          action: 'clickCenter',
+          activityIds: '.view.app.detail.v4.AppDetailV4Activity',
+          matches: [
+            'FrameLayout[childCount=5] > FrameLayout > @ImageView[visibleToUser=true][width=height] <<n [vid="cardAd"]',
+          ],
+        },
+      ],
+    },
+    {
+      key: 4,
+      name: '局部类-帖子页广告',
+      desc: '自动关闭广场帖子页各类广告',
+      actionCd: 500,
+      matchRoot: true,
+      rules: [
+        {
+          fastQuery: true,
+          action: 'clickCenter',
+          activityIds: '.view.article.ArticleDetailActivity',
+          matches:
+            'FrameLayout[childCount=5] > FrameLayout > @ImageView[visibleToUser=true][width=height] <<n [vid="adView"]',
+        },
+        {
+          fastQuery: true,
+          action: 'clickCenter',
+          activityIds: '.view.article.ArticleDetailActivity',
+          matches:
+            'FrameLayout[childCount=3] > FrameLayout > @ImageView[visibleToUser=true][width=height] <<n [vid="adView"]',
+        },
+      ],
+    },
+    {
+      key: 5,
+      name: '功能类-缓存清理自动清理选中缓存',
+      desc: '自动点击缓存清理-清除选中缓存（多为广告sdk缓存）',
+      rules: [
+        {
+          fastQuery: true,
+          activityIds: '.view.settings.cache.CacheClearActivity',
+          matches: '[vid="btnClearCache"][visibleToUser=true]',
         },
       ],
     },

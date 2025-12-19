@@ -18,5 +18,19 @@ export default defineGkdApp({
         },
       ],
     },
+    {
+      key: 2,
+      name: '功能类-支付成功后自动点击完成',
+      desc: '支付成功后自动点击完成',
+      enable: false,
+      rules: [
+        {
+          fastQuery: true,
+          action: 'clickCenter',
+          activityIds: '.activity.react.UPActivityReactNative',
+          matches: '@[text="完成"] < ViewGroup - ScrollView [text="支付成功"]',
+        },
+      ],
+    },
   ],
 });

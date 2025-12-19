@@ -14,7 +14,7 @@ export default defineGkdApp({
           key: 0,
           action: 'clickCenter',
           matches: [
-            '@View[visibleToUser=true][text=""][desc=null] - [text="放心吃"||text="可享权益"]',
+            '@View[visibleToUser=true][text=""][desc=null] - [text="放心吃"||text="可享权益"]',
           ],
           excludeMatches: ['@[text="号码保护"] -n [text="可享权益"]'],
           activityIds: ['com.meituan.msc.modules.container.MSCActivity'],

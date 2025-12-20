@@ -9,7 +9,7 @@ export default defineGkdSubscription({
   version: 0,
   author: 'lisrain',
   checkUpdateUrl: './gkd.version.json5',
-  supportUri: 'https://github.com/lisrain/lisrain_gkd/issues',
+  supportUri: 'https://github.com/lisrain/GKD_subscription/issues',
   categories,
   globalGroups,
   apps: await batchImportApps(`${import.meta.dirname}/apps`),

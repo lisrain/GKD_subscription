@@ -1,5 +1,5 @@
 {
-  "name": "@gkd-kit/subscription-template",
+  "name": "@lisrain/gkd_subscription",
   "version": "0.0.0",
   "type": "module",
   "scripts": {

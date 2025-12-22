@@ -16,5 +16,16 @@ export default defineGkdApp({
         },
       ],
     },
+    {
+      key: 2,
+      name: '功能类-自动确认登录',
+      desc: '自动确认登录12306网站',
+      rules: [
+        {
+          activityIds: 'com.alipay.mobile.nebulacore.ui.H5Activity',
+          matches: '@[text="确认登录"] -2 [text="12306网站登录确认"]',
+        },
+      ],
+    },
   ],
 });

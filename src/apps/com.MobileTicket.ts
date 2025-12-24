@@ -23,7 +23,6 @@ export default defineGkdApp({
       rules: [
         {
           key: 1,
-          fastQuery: true,
           activityIds: 'com.alipay.mobile.nebulacore.ui.H5Activity',
           matches:
             '@[text="确认登录"][visibleToUser=true] -2 [text="12306网站登录确认"]',

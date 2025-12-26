@@ -34,11 +34,10 @@ export default defineGkdApp({
       desc: '自动关闭推送通知提醒弹窗',
       rules: [
         {
-          matches: ['@[vid="tv_deny"] < LinearLayout - [text="开启推送通知"]'],
           fastQuery: true,
-          activityIds: [
-            'com.ct.client.selfservice5.activity.MealAllowanceActivityBlue',
-          ],
+          activityIds: '.selfservice5.activity.MealAllowanceActivityBlue',
+          matches:
+            '@[vid="tv_deny"][visibleToUser=true] < LinearLayout -n [text="开启推送通知"]',
         },
       ],
     },

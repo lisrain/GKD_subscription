@@ -12,7 +12,7 @@ export default defineGkdApp({
         {
           activityIds: 'com.baidu.netdisk.ui.MainActivity',
           matches:
-            '@TextView[visibleToUser=true][width>height]< View + [text="专属福利"] <<n WebView[text="福利专区"]',
+            '@TextView[visibleToUser=true][width>height] < View + [text="专属福利"] <<n WebView[text="福利专区"]',
         },
       ],
     },

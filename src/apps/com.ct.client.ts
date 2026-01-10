@@ -37,7 +37,7 @@ export default defineGkdApp({
           fastQuery: true,
           activityIds: '.selfservice5.activity.MealAllowanceActivityBlue',
           matches:
-            '@[vid="tv_deny"][visibleToUser=true] < LinearLayout -n [text="开启推送通知"]',
+            '@[text="暂不"][visibleToUser=true] < LinearLayout -n [text="开启推送通知"]',
         },
       ],
     },

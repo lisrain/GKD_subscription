@@ -22,5 +22,18 @@ export default defineGkdApp({
         },
       ],
     },
+    {
+      key: 2,
+      name: '功能类-缓存清理自动点击[确定]',
+      desc: '存储空间-一键清理-自动点击[确定]',
+      rules: [
+        {
+          fastQuery: true,
+          activityIds: 'com.taobao.android.cachecleaner.CacheCleanActivity',
+          matches:
+            '@[text="确定"] <<n [id="android:id/buttonPanel"] - [id="android:id/contentPanel"] * + [text="清理淘宝缓存可能需要一点时间，清理过程中请耐心等候"]',
+        },
+      ],
+    },
   ],
 });

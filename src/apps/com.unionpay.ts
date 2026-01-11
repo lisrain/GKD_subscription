@@ -11,7 +11,6 @@ export default defineGkdApp({
       enable: false,
       rules: [
         {
-          action: 'clickCenter',
           activityIds: '.liteapp.app.UPLiteAppActivity1',
           matches:
             '@[text="签到成功"] <<n * - Image[text^="success-head@"] <<n [text="玩赚中心"]',
@@ -26,7 +25,6 @@ export default defineGkdApp({
       rules: [
         {
           fastQuery: true,
-          action: 'clickCenter',
           activityIds: '.activity.react.UPActivityReactNative',
           matches: '@[text="完成"] < ViewGroup - ScrollView [text="支付成功"]',
         },

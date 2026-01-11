@@ -33,5 +33,17 @@ export default defineGkdApp({
         },
       ],
     },
+    {
+      key: 2,
+      name: '功能类-缓存清理自动点击[确定]',
+      desc: '设置-清理缓存-自动点击[确定]',
+      rules: [
+        {
+          activityIds: 'com.meituan.msc.modules.container.MSCActivity',
+          matches:
+            '@[text="确定"][visibleToUser=true] -2 [text="缓存是使用美团过程中的临时数据，清理缓存不会影响你使用美团功能。"] - [text="确定要清理缓存吗"]',
+        },
+      ],
+    },
   ],
 });

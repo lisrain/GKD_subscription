@@ -17,5 +17,18 @@ export default defineGkdApp({
         },
       ],
     },
+    {
+      key: 2,
+      name: '功能类-缓存清理自动点击[确定]',
+      desc: '设置-清除缓存-自动点击[确定]',
+      rules: [
+        {
+          fastQuery: true,
+          activityIds: '.activity.NewPageActivity',
+          matches:
+            '@[text="确定"][visibleToUser=true] <<n LinearLayout -2 LinearLayout > [vid="title"][text="确定要清除缓存吗？"]',
+        },
+      ],
+    },
   ],
 });

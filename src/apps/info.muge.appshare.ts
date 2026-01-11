@@ -110,7 +110,6 @@ export default defineGkdApp({
       rules: [
         {
           fastQuery: true,
-          action: 'clickCenter',
           activityIds: '.view.app.detail.v4.AppDetailV4Activity',
           matches: [
             'FrameLayout[childCount=5] > FrameLayout > @ImageView[visibleToUser=true][width=height] <<n [vid="cardAd"]',
@@ -127,14 +126,12 @@ export default defineGkdApp({
       rules: [
         {
           fastQuery: true,
-          action: 'clickCenter',
           activityIds: '.view.article.ArticleDetailActivity',
           matches:
             'FrameLayout[childCount=5] > FrameLayout > @ImageView[visibleToUser=true][width=height] <<n [vid="adView"]',
         },
         {
           fastQuery: true,
-          action: 'clickCenter',
           activityIds: '.view.article.ArticleDetailActivity',
           matches:
             'FrameLayout[childCount=3] > FrameLayout > @ImageView[visibleToUser=true][width=height] <<n [vid="adView"]',
@@ -150,20 +147,6 @@ export default defineGkdApp({
           fastQuery: true,
           activityIds: '.view.settings.cache.CacheClearActivity',
           matches: '[vid="btnClearCache"][visibleToUser=true]',
-        },
-      ],
-    },
-    {
-      key: 6,
-      name: '测试类-搜索结果页底栏广告',
-      desc: '5.0.5beta2起app重构后独立适配点击关闭',
-      resetMatch: 'match',
-      rules: [
-        {
-          activityIds: '.MainActivity',
-          matches:
-            '@FrameLayout[childCount=1][width=height][visibleToUser=true] <<n ViewFactoryHolder',
-          excludeMatches: ['[text="热门搜索"]', '[text="最新评论"]'], //帖子页广告会误触发帖
         },
       ],
     },

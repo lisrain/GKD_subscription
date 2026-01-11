@@ -31,5 +31,19 @@ export default defineGkdApp({
         },
       ],
     },
+    {
+      key: 3,
+      name: '功能类-清理缓存自动点击[一键清理]',
+      desc: '清理缓存页自动点击[一键清理]',
+      rules: [
+        {
+          fastQuery: true,
+          activityIds:
+            'com.dragon.read.component.biz.impl.mine.clean.DiskCleanActivity',
+          matches:
+            '@[vid="clean_cache_btn"][visibleToUser=true] + [text="可清理的缓存"]',
+        },
+      ],
+    },
   ],
 });

@@ -35,6 +35,7 @@ export default defineGkdApp({
       key: 3,
       name: '功能类-清理缓存自动点击[一键清理]',
       desc: '清理缓存页自动点击[一键清理]',
+      actionMaximum: 1,
       rules: [
         {
           fastQuery: true,

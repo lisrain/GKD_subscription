@@ -39,5 +39,17 @@ export default defineGkdApp({
         },
       ],
     },
+    {
+      key: 2,
+      name: '弹窗类-关闭选择通知接收范围弹窗',
+      desc: '选择通知接收范围-暂时不用',
+      rules: [
+        {
+          fastQuery: true,
+          activityIds: 'com.alipay.mobile.rome.pushservice.integration.PushOpenGuideActivity',
+          matches: '@[text="暂时不用"][visibleToUser=true] < LinearLayout -3 [text="选择通知接收范围"]',
+        },
+      ],
+    }
   ],
 });

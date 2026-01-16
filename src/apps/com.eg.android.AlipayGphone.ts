@@ -46,10 +46,12 @@ export default defineGkdApp({
       rules: [
         {
           fastQuery: true,
-          activityIds: 'com.alipay.mobile.rome.pushservice.integration.PushOpenGuideActivity',
-          matches: '@[text="暂时不用"][visibleToUser=true] < LinearLayout -3 [text="选择通知接收范围"]',
+          activityIds:
+            'com.alipay.mobile.rome.pushservice.integration.PushOpenGuideActivity',
+          matches:
+            '@[text="暂时不用"][visibleToUser=true] < LinearLayout -3 [text="选择通知接收范围"]',
         },
       ],
-    }
+    },
   ],
 });

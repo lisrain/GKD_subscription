@@ -35,5 +35,15 @@ export default defineGkdApp({
         },
       ],
     },
+    {
+      key: 3,
+      name: '局部类-菜鸟小程序banner广告',
+      rules: [
+        {
+          activityIds: 'com.alibaba.triver.container.TriverMainActivity',
+          matches: '@Image[width<50][height<50][visibleToUser=true] <<n View - TextView[id="anchor_packageTopAnchor"] <<n View[id=null]',
+        },
+      ],
+    }
   ],
 });

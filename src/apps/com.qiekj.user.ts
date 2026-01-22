@@ -5,22 +5,6 @@ export default defineGkdApp({
   name: '胖乖生活',
   groups: [
     {
-      key: 1,
-      name: '弹窗类-自动跳过更新',
-      desc: '自动跳过更新弹窗（因强制更新故暂关）',
-      enable: false,
-      actionMaximum: 1,
-      matchTime: 10000,
-      resetMatch: 'app',
-      rules: [
-        {
-          matches: ['[vid="llUpdate"] > [text="立即更新"]'],
-          fastQuery: true,
-          activityIds: ['com.qiekj.user.MainActivity'],
-        },
-      ],
-    },
-    {
       key: 5,
       name: '弹窗类-恭喜获得积分',
       desc: '自动跳过恭喜获得积分弹窗',

@@ -41,9 +41,10 @@ export default defineGkdApp({
       rules: [
         {
           activityIds: 'com.alibaba.triver.container.TriverMainActivity',
-          matches: '@Image[width<50][height<50][visibleToUser=true] <<n View - TextView[id="anchor_packageTopAnchor"] <<n View[id=null]',
+          matches:
+            '@Image[width<50][height<50][visibleToUser=true] <<n View - TextView[id="anchor_packageTopAnchor"] <<n View[id=null]',
         },
       ],
-    }
+    },
   ],
 });

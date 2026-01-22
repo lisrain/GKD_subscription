@@ -12,6 +12,7 @@ export default defineGkdApp({
       rules: [
         {
           activityIds: '.liteapp.app.UPLiteAppActivity1',
+          action: 'clickCenter',
           matches:
             '@[text="签到成功"] <<n * - Image[text^="success-head@"] <<n [text="玩赚中心"]',
         },

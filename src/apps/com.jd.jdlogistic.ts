@@ -39,10 +39,11 @@ export default defineGkdApp({
       rules: [
         {
           activityIds: '.flutter.HomeActivity',
-          matches: '@ImageView[width<100][height<100][visibleToUser=true] <2 View',
+          matches:
+            '@ImageView[width<100][height<100][visibleToUser=true] <2 View',
           snapshotUrls: 'https://i.gkd.li/i/24786139',
         },
       ],
-    }
+    },
   ],
 });

@@ -35,4 +35,10 @@ export default defineGkdCategories([
     name: '测试类',
     enable: false,
   },
+  {
+    // 部分还在测试中的规则，默认不启用
+    key: 6,
+    name: '分段广告类',
+    enable: false,
+  },
 ]);

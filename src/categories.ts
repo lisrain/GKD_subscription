@@ -9,13 +9,13 @@ export default defineGkdCategories([
   {
     key: 1,
     name: '弹窗类',
-    enable: true,
+    enable: false,
   },
   {
     // 部分非广告但属于可以自动点击的弹窗或按钮
     key: 2,
     name: '功能类',
-    enable: true,
+    enable: false,
   },
   {
     // 预留接口，把gkd当自动化用，默认不启用

@@ -6,7 +6,7 @@ export default defineGkdApp({
   groups: [
     {
       key: 1,
-      name: '分段广告类-咱不开启安全备份',
+      name: '分段广告类-暂不开启安全备份',
       rules: [
         {
           key: 1,
@@ -19,6 +19,7 @@ export default defineGkdApp({
         {
           key: 2,
           preKeys: [1],
+          actionDelay: 500,
           fastQuery: true,
           activityIds: 'com.baidu.netdisk.ui.NewQuickSettingsActivity',
           matches:

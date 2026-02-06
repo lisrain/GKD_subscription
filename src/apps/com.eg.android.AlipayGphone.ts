@@ -53,5 +53,18 @@ export default defineGkdApp({
         },
       ],
     },
+    {
+      key: 3,
+      name: '弹窗类-关闭蚂蚁森林小组件优先体验权',
+      desc: '弹窗广告',
+      rules: [
+        {
+          activityIds:
+            'com.alipay.mobile.nebulax.xriver.activity.XRiverActivity',
+          matches:
+            '[text="通用半浮层容器页面"] >4 @View[clickable=false][visibleToUser=true] + [text="恭喜获得小组件优先体验权"]',
+        },
+      ],
+    },
   ],
 });

@@ -14,6 +14,8 @@ jobs:
       ${{ github.event.head_commit.message != 'chore(actions): check_format_lint' }}
     steps:
       - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0 # 变基需要完整的提交历史
 
       - uses: actions/setup-node@v4
         with:
@@ -23,35 +25,31 @@ jobs:
 
       - run: pnpm install
 
-      # 1. 校验类型和 GKD 规则合法性（关键！）
       - run: pnpm run check
-
-      # 2. 自动修复代码风格（Prettier + ESLint --fix）
       - run: pnpm run format
       - run: pnpm run lint
 
-      # 3. 仅在有实际变更时才提交
       - name: Commit fixes if any
         id: commit
         run: |
           git config --local user.email "github-actions[bot]@users.noreply.github.com"
           git config --local user.name "github-actions[bot]"
           
-          # 检查工作区是否有未暂存的变更
           if ! git diff --quiet; then
-            echo "Detected formatting/linting changes. Committing..."
+            echo "Detected changes. Committing..."
             git add .
             git commit -m "chore(actions): check_format_lint"
             echo "committed=true" >> "$GITHUB_OUTPUT"
           else
-            echo "No changes detected. Skipping commit."
+            echo "No changes. Skipping commit."
             echo "committed=false" >> "$GITHUB_OUTPUT"
           fi
         shell: bash
 
-      # 4. 仅在有提交时才推送
       - name: Push fixes
-        uses: ad-m/github-push-action@master
         if: ${{ steps.commit.outputs.committed == 'true' }}
-        with:
-          branch: ${{ github.ref }}
+        run: |
+          # 核心改动：先拉取并变基，确保提交线永远是直的
+          git pull --rebase origin ${{ github.ref_name }}
+          git push origin ${{ github.ref_name }}
+        shell: bash

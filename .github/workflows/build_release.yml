@@ -2,9 +2,8 @@ name: build_release
 
 on:
   schedule:
-    - cron: '0 19 * * *'
+    - cron: '0 19 * * *' # 每天凌晨运行
   workflow_dispatch:
-
 
 jobs:
   build_release:
@@ -14,7 +13,7 @@ jobs:
     steps:
       - uses: actions/checkout@v4
         with:
-          fetch-depth: 0
+          fetch-depth: 0 # 必须设为 0，以便进行变基操作
 
       - uses: actions/setup-node@v4
         with:
@@ -31,26 +30,33 @@ jobs:
           version=$(node -e "import('@gkd-kit/tools').then((m) => m.stdoutGkdVersion());")
           echo "version=${version}" >> "$GITHUB_OUTPUT"
 
-      - name: Git commit
-        id: commit
+      # 核心改进：智能合并与推送
+      - name: Git commit and push
+        id: commit_push
         run: |
-          git config --local user.email github-actions[bot]@users.noreply.github.com
-          git config --local user.name github-actions[bot]
-          git status
-          git add .
-          git commit -a -m "chore: v${{steps.version.outputs.version}}"
-        continue-on-error: true
-
-      - name: Git push
-        if: ${{ steps.commit.outcome == 'success' }}
-        uses: ad-m/github-push-action@master
-        with:
-          github_token: ${{ secrets.GITHUB_TOKEN }}
-          branch: ${{ github.ref }}
-          tags: true
+          git config --local user.email "github-actions[bot]@users.noreply.github.com"
+          git config --local user.name "github-actions[bot]"
+          
+          # 检查文件是否有变动
+          if [ -n "$(git status --porcelain)" ]; then
+            git add .
+            git commit -m "chore: v${{ steps.version.outputs.version }}"
+            
+            # 【关键】推送前先拉取远程更新并变基
+            # 如果你白天推了规则，Actions 会把这行 chore 自动接到你的提交后面
+            git pull --rebase origin ${{ github.ref_name }}
+            
+            # 推送代码及相应的 Tag
+            git push origin ${{ github.ref_name }} --tags
+            echo "pushed=true" >> "$GITHUB_OUTPUT"
+          else
+            echo "No changes detected. Skipping push."
+            echo "pushed=false" >> "$GITHUB_OUTPUT"
+          fi
+        shell: bash
 
       - name: Create Release
-        if: ${{ steps.commit.outcome == 'success' }}
+        if: ${{ steps.commit_push.outputs.pushed == 'true' }}
         uses: actions/create-release@v1
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
@@ -62,7 +68,8 @@ jobs:
       - name: Publish package
         env:
           NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
-        if: ${{ steps.commit.outcome == 'success' && env.NPM_TOKEN != '' }}
+        # 仅在推送成功且有 NPM_TOKEN 时执行
+        if: ${{ steps.commit_push.outputs.pushed == 'true' && env.NPM_TOKEN != '' }}
         run: |
           pnpm config set //registry.npmjs.org/:_authToken ${{ secrets.NPM_TOKEN }}
           node -e "import('@gkd-kit/tools').then((m) => m.updatePkgVersion());"

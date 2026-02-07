@@ -3,26 +3,59 @@ name: build_release
 on:
   schedule:
     - cron: '0 19 * * *' # 每天凌晨运行
-  workflow_dispatch:
+  workflow_dispatch: # 支持手动点击运行
 
 jobs:
-  build_release:
+  # 第一阶段：大佬的变动检测逻辑
+  check_changes:
     runs-on: ubuntu-latest
     outputs:
-      version: ${{ steps.version.outputs.version }}
+      changed: ${{ steps.changes.outputs.changed }}
     steps:
       - uses: actions/checkout@v4
         with:
-          fetch-depth: 0 # 必须设为 0，以便进行变基操作
+          fetch-depth: 0 # 必须获取完整历史
+          
+      - id: changes
+        run: |
+          if [ "${{ github.event_name }}" == "workflow_dispatch" ]; then
+              echo "changed=true" >> $GITHUB_OUTPUT
+          else
+            # 获取上一个 Tag，如果没有 Tag 则视为有变动
+            prev_tag=$(git describe --tags --abbrev=0 2>/dev/null || echo "none")
+            if [ "$prev_tag" == "none" ]; then
+              echo "changed=true" >> $GITHUB_OUTPUT
+            else
+              # 只有当 src 目录有差异时才触发后续步骤
+              if git diff --exit-code $prev_tag HEAD -- src; then
+                echo "No changes in 'src'. Skipping."
+                echo "changed=false" >> $GITHUB_OUTPUT
+              else
+                echo "Changes found. Starting build."
+                echo "changed=true" >> $GITHUB_OUTPUT
+              fi
+            fi
+          fi
 
-      - uses: actions/setup-node@v4
+  # 第二阶段：编译与发版
+  build_release:
+    needs: check_changes
+    if: ${{ needs.check_changes.outputs.changed == 'true' }}
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
         with:
-          node-version: 22
+          fetch-depth: 0
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 24 # 使用最新的 Node 24 LTS
 
       - uses: pnpm/action-setup@v4
 
       - run: pnpm install
-
+      
       - run: pnpm run build
 
       - id: version
@@ -30,48 +63,35 @@ jobs:
           version=$(node -e "import('@gkd-kit/tools').then((m) => m.stdoutGkdVersion());")
           echo "version=${version}" >> "$GITHUB_OUTPUT"
 
-      # 核心改进：智能合并与推送
+      # 第三阶段：核心防分叉提交逻辑
       - name: Git commit and push
         id: commit_push
         run: |
           git config --local user.email "github-actions[bot]@users.noreply.github.com"
           git config --local user.name "github-actions[bot]"
           
-          # 检查文件是否有变动
+          # git add . 会把编译后的 dist 和被脚本修改的 README.md 一起存入暂存区
           if [ -n "$(git status --porcelain)" ]; then
             git add .
             git commit -m "chore: v${{ steps.version.outputs.version }}"
             
-            # 【关键】推送前先拉取远程更新并变基
-            # 如果你白天推了规则，Actions 会把这行 chore 自动接到你的提交后面
-            git pull --rebase origin ${{ github.ref_name }}
+            # 【拉直历史的关键】
+            git pull --rebase origin main
             
-            # 推送代码及相应的 Tag
-            git push origin ${{ github.ref_name }} --tags
+            git push origin main --tags
             echo "pushed=true" >> "$GITHUB_OUTPUT"
           else
-            echo "No changes detected. Skipping push."
             echo "pushed=false" >> "$GITHUB_OUTPUT"
           fi
         shell: bash
 
+      # 第四阶段：发版（采用更现代的 Action 并修复参数名）
       - name: Create Release
         if: ${{ steps.commit_push.outputs.pushed == 'true' }}
-        uses: actions/create-release@v1
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        uses: softprops/action-gh-release@v2
         with:
           tag_name: v${{ steps.version.outputs.version }}
-          release_name: Release ${{ steps.version.outputs.version }}
+          name: Release ${{ steps.version.outputs.version }}
           body_path: ./dist/CHANGELOG.md
-
-      - name: Publish package
         env:
-          NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
-        # 仅在推送成功且有 NPM_TOKEN 时执行
-        if: ${{ steps.commit_push.outputs.pushed == 'true' && env.NPM_TOKEN != '' }}
-        run: |
-          pnpm config set //registry.npmjs.org/:_authToken ${{ secrets.NPM_TOKEN }}
-          node -e "import('@gkd-kit/tools').then((m) => m.updatePkgVersion());"
-          pnpm publish --no-git-checks
-          node -e "import('@gkd-kit/tools').then((m) => m.syncNpmmirror());"
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}

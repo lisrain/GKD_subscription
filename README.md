@@ -14,7 +14,7 @@
 
 ## 注意
 
-该订阅的目标仅作为个人自用，主要是填补各大佬发布的规则里未来得及修复或未覆盖到的部分，目标并非为覆盖大部分app，目前覆盖到的app仅十来个，且无固定更新时间，如果有更新，一般会在每天凌晨统一推送发布，如有介意，请勿导入使用。
+该订阅的目标仅作为个人自用，主要是填补各大佬发布的规则里未来得及修复或未覆盖到的部分，目标并非为覆盖大部分app，**仅适配简中区app，作为部分大佬的规则库的补充规则，可以同时开启**。无固定更新时间，如果有更新，一般会在每天凌晨统一推送发布，如有介意，请勿导入使用。
 
 ## 安装与使用
 
@@ -25,7 +25,7 @@
 
    如位于大陆地区，可使用如下镜像站链接导入（二选一）：
 
-   [https://gh-proxy.org/https://raw.githubusercontent.com/lisrain/GKD_subscription/main/dist/gkd.json5](https://gh-proxy.org/https://raw.githubusercontent.com/lisrain/GKD_subscription/main/dist/gkd.json5)
+   [https://cdn.gh-proxy.org/https://raw.githubusercontent.com/lisrain/GKD_subscription/main/dist/gkd.json5](https://cdn.gh-proxy.org/https://raw.githubusercontent.com/lisrain/GKD_subscription/main/dist/gkd.json5)
 
    [https://fastly.jsdelivr.net/gh/lisrain/GKD_subscription@main/dist/gkd.json5](https://fastly.jsdelivr.net/gh/lisrain/GKD_subscription@main/dist/gkd.json5)
 
@@ -40,4 +40,4 @@
 
 ## 作者说
 
-> APP覆盖范围越来越大了，目前仅默认启用弹窗类，部分测试类，功能类默认不启用，按各人情况自行选择。
+> APP覆盖范围越来越大了，目前仅默认启用特殊适配的开屏广告（本规则库无全局规则开发计划），其余所有规则类别统一关闭，如需要可以手动启用。

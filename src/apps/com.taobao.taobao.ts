@@ -52,9 +52,10 @@ export default defineGkdApp({
       desc: '关闭淘金币-订外卖最低0元购弹窗',
       rules: [
         {
-          activityIds: 'com.taobao.themis.container.app.TMSActivity',
-          matches:
-            '@[text="关闭"][desc=null][visibleToUser=true] -3 [text^="下单满30元，再享补贴"] - Image[index=0] < View',
+          matches: [
+            '@[text="关闭"][desc=null][visibleToUser=true] -3 [text^="下单满30元，再享补贴"||text^="订票订酒店"] - Image[index=0] < View',
+          ],
+          activityIds: ['com.taobao.themis.container.app.TMSActivity'],
         },
       ],
     },

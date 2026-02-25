@@ -39,6 +39,14 @@ export default defineGkdApp({
           fastQuery: true,
           activityIds: ['com.octopus.ad.AdActivity'],
         },
+        {
+          fastQuery: true,
+          activityIds:
+            'com.bytedance.sdk.openadsdk.stub.activity.Stub_Standard_Portrait_Activity',
+          matches:
+            '@ImageView[index=0][visibleToUser=true] < ViewGroup - ViewGroup > [text="反馈"]',
+          snapshotUrls: 'https://i.gkd.li/i/25535351',
+        },
       ],
     },
   ],

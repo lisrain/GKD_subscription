@@ -8,7 +8,6 @@ export default defineGkdApp({
       key: 1,
       name: '功能类-拼好饭自动打开号码保护',
       desc: '拼好饭订单页自动打开号码保护',
-      enable: false,
       rules: [
         {
           key: 0,
@@ -42,6 +41,20 @@ export default defineGkdApp({
           activityIds: 'com.meituan.msc.modules.container.MSCActivity',
           matches:
             '@[text="确定"][visibleToUser=true] -2 [text="缓存是使用美团过程中的临时数据，清理缓存不会影响你使用美团功能。"] - [text="确定要清理缓存吗"]',
+        },
+      ],
+    },
+    {
+      key: 3,
+      name: '弹窗类-忽略“升级极速支付”诱导弹窗',
+      desc: '自动“X”掉“付款后的”升级极速支付“弹窗',
+      rules: [
+        {
+          action: 'clickCenter',
+          activityIds:
+            'com.meituan.android.hybridcashier.HybridCashierActivity',
+          matches:
+            '@TextView[text=""][visibleToUser=true] +3 [text="支付成功 升级极速支付"] <4 View <<n [text="支付成功"]',
         },
       ],
     },

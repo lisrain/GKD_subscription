@@ -19,5 +19,18 @@ export default defineGkdApp({
         },
       ],
     },
+    {
+      key: 2,
+      name: '局部类-首页角落广告[每日一次]',
+      rules: [
+        {
+          fastQuery: true,
+          activityIds:
+            'com.zjwh.android_wh_physicalfitness.mvi.home.HomeActivity',
+          matches:
+            '@[vid="tianmu_suspend_iv_close"][width=height] - [vid="tianmu_suspend_iv_pic"] < [vid="tianmu_suspend_rl_container"]',
+        },
+      ],
+    },
   ],
 });

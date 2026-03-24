@@ -13,11 +13,11 @@ jobs:
     if: |
       ${{ github.event.head_commit.message != 'chore(actions): check_format_lint' }}
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@v5
         with:
           fetch-depth: 0 # 变基需要完整的提交历史
 
-      - uses: actions/setup-node@v4
+      - uses: actions/setup-node@v5
         with:
           node-version: 24
 

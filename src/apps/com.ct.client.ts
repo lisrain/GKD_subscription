@@ -31,7 +31,7 @@ export default defineGkdApp({
     {
       key: 2,
       name: '弹窗类-自动关闭推送通知提醒弹窗',
-      desc: '自动关闭推送通知提醒弹窗',
+      desc: '关闭推送通知提醒弹窗',
       rules: [
         {
           fastQuery: true,

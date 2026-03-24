@@ -29,5 +29,18 @@ export default defineGkdApp({
         },
       ],
     },
+    {
+      key: 3,
+      name: '弹窗类-关闭消息通知开启弹窗',
+      desc: '点击右上角X跳过弹窗',
+      rules: [
+        {
+          fastQuery: true,
+          activityIds: 'com.baidu.netdisk.ui.MainActivity',
+          matches:
+            '@[vid="dialog_cancel"][visibleToUser=true] <2 * + [vid="dialog_footer"] > [text="开启消息通知"]',
+        },
+      ],
+    },
   ],
 });

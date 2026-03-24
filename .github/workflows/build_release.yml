@@ -15,7 +15,7 @@ jobs:
       - uses: actions/checkout@v5
         with:
           fetch-depth: 0 # 必须获取完整历史
-          
+
       - id: changes
         run: |
           if [ "${{ github.event_name }}" == "workflow_dispatch" ]; then
@@ -47,12 +47,13 @@ jobs:
         with:
           fetch-depth: 0
 
+      - uses: pnpm/action-setup@v4
+
       - name: Setup Node.js
         uses: actions/setup-node@v5
         with:
           node-version: 24 # 使用最新的 Node 24 LTS
-
-      - uses: pnpm/action-setup@v4
+          cache: 'pnpm'
 
       - run: pnpm install
       

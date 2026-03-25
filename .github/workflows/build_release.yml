@@ -89,7 +89,7 @@ jobs:
       # 第四阶段：发版（采用更现代的 Action 并修复参数名）
       - name: Create Release
         if: ${{ steps.commit_push.outputs.pushed == 'true' }}
-        uses: softprops/action-gh-release@v2
+        uses: softprops/action-gh-release@v2.6.1
         with:
           tag_name: v${{ steps.version.outputs.version }}
           name: Release ${{ steps.version.outputs.version }}

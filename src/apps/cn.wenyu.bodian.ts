@@ -23,6 +23,13 @@ export default defineGkdApp({
           activityIds: '.MainActivity',
           matches: '[text="立即开通"] -2 TextView[visibleToUser=true]',
         },
+        {
+          key: 3,
+          fastQuery: true,
+          activityIds: 'cn.wenyu.bodian.MainActivity',
+          matches:
+            '[text="畅听会员年卡"] - @TextView[visibleToUser=true] < View <2 View < WebView < WebView <2 View < View < FrameLayout < [id="android:id/content"]',
+        },
       ],
     },
   ],

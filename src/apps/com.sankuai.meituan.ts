@@ -51,9 +51,11 @@ export default defineGkdApp({
       rules: [
         {
           fastQuery: true,
-          activityIds: 'com.meituan.android.hybridcashier.HybridCashierActivity',
-          matches: '@TextView[clickable=false][width<90][height<90] < View < View < View < View <2 View < View < WebView < WebView < [vid="mil_container"]',
-        }
+          activityIds:
+            'com.meituan.android.hybridcashier.HybridCashierActivity',
+          matches:
+            '@TextView[clickable=false][width<90][height<90] < View < View < View < View <2 View < View < WebView < WebView < [vid="mil_container"]',
+        },
       ],
     },
   ],

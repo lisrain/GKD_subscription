@@ -50,12 +50,10 @@ export default defineGkdApp({
       desc: '自动“X”掉“付款后的”升级极速支付“弹窗',
       rules: [
         {
-          action: 'clickCenter',
-          activityIds:
-            'com.meituan.android.hybridcashier.HybridCashierActivity',
-          matches:
-            '@TextView[text=""][visibleToUser=true] +3 [text="支付成功 升级极速支付"] <4 View <<n [text="支付成功"]',
-        },
+          fastQuery: true,
+          activityIds: 'com.meituan.android.hybridcashier.HybridCashierActivity',
+          matches: '@TextView[clickable=false][width<90][height<90] < View < View < View < View <2 View < View < WebView < WebView < [vid="mil_container"]',
+        }
       ],
     },
   ],

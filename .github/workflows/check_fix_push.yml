@@ -7,30 +7,43 @@ on:
 
 permissions: write-all
 
+env:
+  FORCE_JAVASCRIPT_ACTIONS_TO_NODE24: true
+
 jobs:
   check:
     runs-on: ubuntu-latest
-    if: |
-      ${{ github.event.head_commit.message != 'chore(actions): check_format_lint' }}
+    if: ${{ github.event.head_commit.message != 'chore(actions): check_format_lint' }}
     steps:
-      - uses: actions/checkout@v5
+      - name: 检出仓库代码
+        uses: actions/checkout@v5
         with:
-          fetch-depth: 0 # 变基需要完整的提交历史
+          fetch-depth: 0
 
-      - uses: pnpm/action-setup@v4
-
-      - uses: actions/setup-node@v5
+      - name: 配置 Node.js 运行环境
+        uses: actions/setup-node@v5
         with:
-          node-version: 24
-          cache: 'pnpm'
+          node-version: 25
+          package-manager-cache: false
 
-      - run: pnpm install
+      - name: 启用 corepack 并安装 pnpm
+        run: |
+          corepack enable
+          corepack prepare pnpm@latest --activate
 
-      - run: pnpm run check
-      - run: pnpm run format
-      - run: pnpm run lint
+      - name: 安装项目依赖
+        run: pnpm install
 
-      - name: Commit fixes if any
+      - name: 执行项目检查
+        run: pnpm run check
+
+      - name: 执行代码格式化
+        run: pnpm run format
+
+      - name: 执行代码静态检查
+        run: pnpm run lint
+
+      - name: 提交自动修复结果
         id: commit
         run: |
           git config --local user.email "github-actions[bot]@users.noreply.github.com"
@@ -47,10 +60,9 @@ jobs:
           fi
         shell: bash
 
-      - name: Push fixes
+      - name: 推送修复后的代码
         if: ${{ steps.commit.outputs.committed == 'true' }}
         run: |
-          # 核心改动：先拉取并变基，确保提交线永远是直的
           git pull --rebase origin ${{ github.ref_name }}
           git push origin ${{ github.ref_name }}
         shell: bash

@@ -13,7 +13,7 @@ env:
 jobs:
   check:
     runs-on: ubuntu-latest
-    if: ${{ github.event.head_commit.message != 'chore(actions): check_format_lint' }}
+    if: "${{ github.event.head_commit.message != 'chore(actions): check_format_lint' }}"
     steps:
       - name: 检出仓库代码
         uses: actions/checkout@v5

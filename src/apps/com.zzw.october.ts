@@ -47,6 +47,11 @@ export default defineGkdApp({
             '@ImageView[index=0][visibleToUser=true] < ViewGroup - ViewGroup > [text="反馈"]',
           snapshotUrls: 'https://i.gkd.li/i/25535351',
         },
+        {
+          fastQuery: true,
+          activityIds: 'com.meishu.sdk.activity.SdkInterstitialActivity',
+          matches: '[vid="ms_activity_sdk_interstitial_cacel"]',
+        },
       ],
     },
   ],

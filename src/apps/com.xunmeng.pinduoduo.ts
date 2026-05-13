@@ -30,5 +30,17 @@ export default defineGkdApp({
         },
       ],
     },
+    {
+      key: 3,
+      name: '弹窗类-关闭[评价领现金]弹窗',
+      desc: '自动X掉[评价领现金]',
+      rules: [
+        {
+          activityIds: 'com.xunmeng.pinduoduo.activity.NewPageActivity',
+          matches:
+            '@ImageView < ViewGroup < ViewGroup < ViewGroup <2 ViewGroup < ViewGroup < FrameLayout < FrameLayout < FrameLayout < FrameLayout < FrameLayout < [parent=null]',
+        },
+      ],
+    },
   ],
 });

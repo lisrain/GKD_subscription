@@ -27,7 +27,10 @@ export default defineGkdApp({
             '@[text="取消"][visibleToUser=true] <<n *[vid="content_view"] > *[vid="layout_text"] > *[text="开启推送提醒"][visibleToUser=true]',
           ],
           fastQuery: true,
-          activityIds: 'com.dragon.read.pages.main.MainFragmentActivity',
+          activityIds: [
+            'com.dragon.read.pages.main.MainFragmentActivity',
+            'com.dragon.read.reader.ui.ReaderActivity',
+          ],
         },
       ],
     },
